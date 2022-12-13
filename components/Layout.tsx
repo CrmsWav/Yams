@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react'
+import { ReactNode } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 
@@ -7,32 +7,46 @@ type LayoutProps = {
   title?: string
 }
 
-const Layout: FC<LayoutProps> = ({ children, title = 'Yamstry' }) => (
-    <div className="Layout">
+export default function Layout({children, title = "Yamstrie"}: LayoutProps) {
+  // console.log('children', children);
+  // console.log('title', title);
+  
+  return(
+    <>
       <Head>
         <title>{title}</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="description" content="The Yamstrie is a game to be promote a pastrie by winning cakes" />
       </Head>
 
-      <header>
-        <nav>
-          <Link href="/">Home</Link> | <Link href="/about">About</Link> |{' '}
-          <Link href="/users">Users List</Link> |{' '}
-          <a href="/api/users">Users API</a>
-        </nav>
-      </header>
+      <div className='flex min-h-screen flex-col justify-between'>
+        <header>
+          <nav className='flex h-12 items-center px-4 justify-between shadow-sm'>
+            <Link href="/">{title}</Link>
+            <Link href="/prizes">Prizes To Be Won</Link>
+          </nav>
+        </header>
 
-      <main>
-        <h1 className='text-3xl font-bold'>YAMS</h1>
-        {children}
-      </main>
+        <main>
+          {children}
+        </main>
+        
+        <footer>
+          <p>Footer</p>
+        </footer>
+      </div>
+    </>
+  )
+}
 
-      <footer>
-        <hr />
-        <p>I am here to stay (Footer)</p>
-      </footer>
-    </div>
-)
+// export const getStaticProps = async () => {
+//   const res = await fetch('')
+//   const datas = await res.json()
 
-export default Layout
+//   return {
+//     props: {
+//       datas
+//     },
+//   }
+// }
