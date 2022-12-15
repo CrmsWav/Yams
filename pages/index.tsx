@@ -1,10 +1,11 @@
 import Layout from '../components/Layout'
+import Game from '../components/Game'
 
-export default function Home() {
+export default function Home({datas}: any) {  
   return (
     <div>
       <Layout>
-        <h1>Home</h1>
+        <Game />
       </Layout>
     </div>
   )
