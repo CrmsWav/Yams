@@ -1,31 +1,14 @@
+import { NextApiRequest, NextApiResponse } from 'next';
+import { connectMongo } from '../../utils/connectMongo';
+import Yams from '../../models/yamsModel';
 
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
-
-type Data = {
-  _id: string
-  pastries: Array<{
-    name: string
-    number: number
-    order: number
-  }>
-}
-
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  res.status(200).json({
-    _id: "5c9b5b5b5b5b5b5b5b5b5b5b",
-    pastries : [
-        { "name" : "Fondant supreme" , "number" : 10, "order" : 1 },
-        { "name" : "Cake tout Chocolat", "number" : 10,  "order" : 2},
-        { "name" : "Cake Framboise chocolat", "number" : 10, "order" : 3},
-        { "name" : "Brioche sucrée avec chocolat", "number" : 10, "order" : 4},
-        { "name" : "Cake glacé fondant au chocolat", "number" : 10, "order" : 5},
-        { "name" : "Eclairs au chocolat", "number" : 10, "order" : 6},
-        { "name" : "Tarte poire chocolat", "number" : 10, "order" : 7},
-        { "name" : "Banana  au chocolat", "number" : 10, "order" : 8}
-    ]
-})
+export default async function getPastries(req: NextApiRequest, res: NextApiResponse) {
+    const { pastries } = req.body
+    console.log('CONNECTING TO MONGO');
+    await connectMongo()
+    console.log('CONNECTED TO MONGO');
+    console.log('CREATING DOCUMENT');
+    const yams = await Yams.create({ pastries })
+    console.log('CREATED DOCUMENT');
+    res.json({ yams })
 }
