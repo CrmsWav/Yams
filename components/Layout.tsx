@@ -8,9 +8,6 @@ type LayoutProps = {
 }
 
 export default function Layout({children, title = "Yamstrie"}: LayoutProps) {
-  // console.log('children', children);
-  // console.log('title', title);
-  
   return(
     <>
       <Head>
@@ -20,33 +17,22 @@ export default function Layout({children, title = "Yamstrie"}: LayoutProps) {
         <meta name="description" content="The Yamstrie is a game to be promote a pastrie by winning cakes" />
       </Head>
 
-      <div className='flex min-h-screen flex-col justify-between'>
+      <div className='flex min-h-screen flex-col justify-between relative'>
         <header>
-          <nav className='flex h-12 items-center px-4 justify-between shadow-sm'>
-            <Link href="/">{title}</Link>
-            <Link href="/prizes">Prizes To Be Won</Link>
+          <nav className='flex h-12 justify-between items-center p-4 shadow'>
+            <Link className='text-xl font-bold' href="/">{title}</Link>
+            <Link className='text-xl font-bold' href="/prizes">Prizes</Link>
           </nav>
         </header>
 
-        <main>
+        <main className='container m-auto mt-4 px-4'>
           {children}
         </main>
         
         <footer>
-          <p>Footer</p>
+          <p className='flex justify-center text-xl py-4'>Yamstrie © - 2022</p>
         </footer>
       </div>
     </>
   )
 }
-
-// export const getStaticProps = async () => {
-//   const res = await fetch('')
-//   const datas = await res.json()
-
-//   return {
-//     props: {
-//       datas
-//     },
-//   }
-// }
