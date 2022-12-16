@@ -2,19 +2,17 @@ import { GetStaticProps } from 'next';
 import React from 'react'
 import Layout from '../../components/Layout';
 
-function Prizes({ datas }: any) {
-  console.log('datas.yams.pastries', datas.yams.pastries);
+function Prizes({ datas }: any) {  
   return (
     <Layout>
-      <div className='flex justify-center'>
-        <div>
-            <h1 className='text-3xl font-bold'>Prizes</h1>
-            {datas.yams.pastries.map((pastrie: any) => (
-              <div key={datas.id}>
-                  <h1>{pastrie.name}</h1>
-              </div>
+      <div className='flex flex-col items-center'>
+          <h1 className='text-3xl font-bold'>Prizes</h1>
+
+          <ul className=''>
+            {datas[0].pastries.map((pastrie: any, id: any) => (
+              <li key={id}>{pastrie.name}</li>
             ))}
-        </div>
+          </ul>
       </div>
     </Layout>
   )
@@ -23,7 +21,7 @@ function Prizes({ datas }: any) {
 export default Prizes
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch(process.env.API_URL + '/pastries')
+  const res = await fetch(process.env.API_URL + '/datas/pastries')
   const datas = await res.json()
 
   return {
