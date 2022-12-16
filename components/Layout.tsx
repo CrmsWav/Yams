@@ -17,7 +17,7 @@ export default function Layout({children, title = "Yamstrie"}: LayoutProps) {
         <meta name="description" content="The Yamstrie is a game to be promote a pastrie by winning cakes" />
       </Head>
 
-      <div className='flex min-h-screen flex-col justify-between relative'>
+      <div className='flex min-h-screen flex-col justify-between'>
         <header>
           <nav className='flex h-12 justify-between items-center p-4 shadow'>
             <Link className='text-xl font-bold' href="/">{title}</Link>
