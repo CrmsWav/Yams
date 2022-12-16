@@ -20,17 +20,17 @@ export default function Layout({children, title = "Yamstrie"}: LayoutProps) {
       <div className='flex min-h-screen flex-col justify-between'>
         <header>
           <nav className='flex h-12 justify-between items-center p-4 shadow'>
-            <Link className='text-xl font-bold' href="/">{title}</Link>
-            <Link className='text-xl font-bold' href="/prizes">Prizes</Link>
+            <Link className='text-xl font-bold text-tertiary' href="/">{title}</Link>
+            <Link className='text-xl font-bold text-tertiary' href="/prizes">Prizes</Link>
           </nav>
         </header>
 
-        <main className='container m-auto mt-4 px-4'>
+        <main className='p-4'>
           {children}
         </main>
         
         <footer>
-          <p className='flex justify-center text-xl py-4'>Yamstrie © - 2022</p>
+          <p className='flex justify-center text-xl text-tertiary py-4'>Yamstrie © - 2022</p>
         </footer>
       </div>
     </>

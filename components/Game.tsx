@@ -55,32 +55,34 @@ function Game() {
     switch (true) {
       case checkPair():
         setCombination('Pair')
-        setResultMessage('Tu as gagné une pâtisserie !!! 🥳🥳🥳')
+        setResultMessage('You won a pastry !!! 🥳🥳🥳')
         break;
 
       case checkCarre():
         setCombination('Carre')
-        setResultMessage('Tu as gagné deux pâtisserie !!! 🥳🥳🥳')
+        setResultMessage('You won TWO pastry !!! 🥳🥳🥳')
         break;
       
       case checkYams():
         setCombination('Yams')
-        setResultMessage('Tu as gagné trois pâtisserie !!! 🥳🥳🥳')
+        setResultMessage('You won THREE pastry !!! 🥳🥳🥳')
         break;
     
       default:
         setCombination('Rien')
-        setResultMessage('Tu as perdu !!! 😭😭😭')
+        setResultMessage('You Lose !!! 😭😭😭')
         break;
     }
   }
 
   return (
     <div className='h-full flex flex-col justify-center'>
-      <h1 className='text-3xl font-bold text-center'>Roll The Dice !</h1>
+      <h1 className='text-3xl font-bold text-center my-4 text-tertiary'>Roll The Dice !</h1>
 
       <div className='flex flex-col items-center'>
-        <div className='flex justify-around'>
+        <p className='my-4'>Make a pair, quad or yams to win !</p>
+
+        <div className='flex justify-around my-4'>
           <Image src={image1} alt={'dice 1'} width={50} height={50} />
           <Image src={image2} alt={'dice 2'} width={50} height={50} />
           <Image src={image3} alt={'dice 3'} width={50} height={50} />
@@ -89,7 +91,7 @@ function Game() {
         </div>
 
         <button
-          className='bg-tertiary text-secondary hover:bg-secondary hover:text-tertiary font-bold py-2 px-4 rounded'
+          className='bg-tertiary hover:bg-secondary hover:text-tertiary font-bold py-2 px-4 rounded my-4'
           onClick={diceRoll}
         >
           Play
@@ -97,11 +99,9 @@ function Game() {
       </div>
 
       <div className='flex flex-col items-center'>
-        <h2 className='text-3xl font-bold text-center'>Results</h2>
+        <h2 className='text-3xl font-bold text-center my-4'>Results</h2>
 
-        <p>{combination}</p>
-
-        <p>{resultMessage}</p>
+        <p className='my-4'>{resultMessage} {combination}</p>
       </div>
     </div>
   )
